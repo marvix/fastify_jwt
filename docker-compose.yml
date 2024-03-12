@@ -1,0 +1,26 @@
+version: '3.9'
+
+networks:
+  fastify.v2:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.13.0/24
+
+
+services:
+
+  api:
+    container_name: ${PROJECT_NAME}-api_test
+    build:
+      context: .
+      dockerfile: servers/api/Dockerfile
+      target: ${NODE_ENV}
+    volumes:
+      - ./src/api:/opt/project
+      - /opt/project/node_modules/
+    ports:
+       - "3000:3000"
+    networks:
+      fastify.v2:

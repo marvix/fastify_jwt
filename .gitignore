@@ -1,0 +1,4 @@
+/src/front/node_modules/
+/servers/mongo/data/
+/servers/mongo/log/
+*/node_modules
